@@ -114,7 +114,7 @@ while(inches > 0){
     inches = inches - 12;
     feet = feet + 1;
   }
-  if(inches < 12){
+  if(inches < 12 && inches > 0){
     inches = inches - 1;
     inch = inch + 1;
   }
@@ -158,7 +158,7 @@ while(centimeters > 0){
     centimeters = centimeters - 100;
     met = met + 1;
   }
-  if(centimeters < 100){
+  if(centimeters < 100 && centimeters > 0){
     centimeters = centimeters - 1;
     centi = centi + 1;
   }
@@ -211,7 +211,7 @@ while(fluidOunces > 0){
     fluidOunces = fluidOunces - 8;
     cups = cups + 1;
   }
-  if(fluidOunces < 8){
+  if(fluidOunces < 8 && fluidOunces > 0){
     fluidOunces = fluidOunces - 1;
     flounces = flounces + 1;
   }
@@ -255,9 +255,9 @@ while(ounces > 0){
     ounces = ounces - 16;
     pounds = pounds + 1;
   }
-  if(ounces < 100){
+  if(ounces < 100 && ounces > 0){
     ounces = ounces - 1;
-    ounce = ounce + 1;
+    ounce++;
   }
 }
   var p = document.getElementById("output8");
@@ -285,7 +285,36 @@ function money() {
   /////////////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 9 CODE HERE
+  let dollars = 0;
+  let quarters = 0;
+  let dimes = 0;
+  let nickels = 0;
+  let penn = 0;
 
+while(pennies > 0){
+  if(pennies >= 100){
+    pennies = pennies - 100;
+    dollars++;
+  }
+  if(pennies < 100 && pennies >= 25){
+    pennies = pennies - 25;
+    quarters++;
+  }
+  if(pennies < 25 && pennies >= 10){
+    pennies = pennies - 10;
+    dimes++;
+  }
+  if(pennies < 10 && pennies >= 5){
+    pennies = pennies - 5;
+    nickels++;
+  }
+  if(pennies < 5 && pennies >0){
+    pennies = pennies - 1;
+    penn=penn+1;
+  }
+}
+var p = document.getElementById("output9");
+p.innerHTML = "Dollars: " + dollars + "<br/>" + "Quarters: " + quarters + "<br/>" + "Dimes: " + dimes + "<br/>" + "Nickels: " + nickels + "<br/>" + "Pennies: " + penn;
   ///////////////////////// DO NOT MODIFY
   check("money", input); // DO NOT MODIFY
   ///////////////////////// DO NOT MODIFY
@@ -309,8 +338,32 @@ function change() {
   ////////////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 10 CODE HERE
+  let total = 0;
 
-  ////////////////////////// DO NOT MODIFY
+  while(amount > 0){
+  if(amount >= .25){
+    amount = amount - .25;
+    total++;
+  }
+  if(amount < .25 && amount >= .10){
+    amount = amount - .10;
+    total++;
+  }
+  if(amount < .10 && amount >= .05){
+    amount = amount - .05;
+    total++;
+  }
+  if(amount < .05 && amount >= 0){
+    amount = amount - .01;
+    total++;
+  }
+  }
+  var p = document.getElementById("output10");
+  if(total == 1){
+    p.innerHTML = total + " coin."
+  }else{
+    p.innerHTML = total + " coins.";
+  }
   check("change", input); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY
 }
