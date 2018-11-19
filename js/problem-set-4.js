@@ -248,7 +248,7 @@ function ounces() {
 
 while(ounces > 0){
   if(ounces >= 32000){
-    centimeters = centimeters - 32000;
+    ounces = ounces - 32000;
     ton = ton + 1;
   }
   if(ounces < 32000 && ounces >= 16){
@@ -338,26 +338,18 @@ function change() {
   ////////////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 10 CODE HERE
-  let total = 0;
+  amount*=100;
+  let quarters = 0;
+  let dimes = 0;
+  let nickels = 0;
+  let penny = 0;
 
-  while(amount > 0){
-  if(amount >= .25){
-    amount = amount - .25;
-    total++;
-  }
-  if(amount < .25 && amount >= .10){
-    amount = amount - .10;
-    total++;
-  }
-  if(amount < .10 && amount >= .05){
-    amount = amount - .05;
-    total++;
-  }
-  if(amount < .05 && amount >= 0){
-    amount = amount - .01;
-    total++;
-  }
-  }
+  quarters = Math.floor(amount/25);
+  dimes = Math.floor((amount-(quarters*25))/10);
+  nickels = Math.floor((amount-(quarters*25) - (dimes *10))/05);
+  penny = Math.floor((amount-(quarters*25) - (dimes * 10) - (nickels*05))/01);
+  let total = quarters + dimes + nickels + penny;
+
   var p = document.getElementById("output10");
   if(total == 1){
     p.innerHTML = total + " coin."
